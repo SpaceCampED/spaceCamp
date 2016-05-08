@@ -7,7 +7,7 @@ var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 module.exports = {
   entry: [
-    './app/index.js'
+    __dirname + '/app/index.js'
   ],
   output: {
     path: __dirname + '/dist',
@@ -15,7 +15,14 @@ module.exports = {
   },
   module: {
     loaders:[
-      {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015']
+        }
+      }
     ]
   },
   plugins: [HtmlWebpackPluginConfig]
