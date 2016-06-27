@@ -1,15 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import brace from 'brace';
+import AceEditor from 'react-ace';
 
-var Hello = React.createClass({
-  render: function(){
-    return <div>hello</div>
-  }
-});
+import 'brace/mode/java';
+import 'brace/theme/github';
 
-ReactDOM.render(
-  <Hello />,
+function onChange(newValue) {
+  console.log('change',newValue);
+}
+
+// Render editor
+render(
+  <AceEditor
+    mode="javascript"
+    theme="solarized_dark"
+    onChange={onChange}
+    name="UNIQUE_ID_OF_DIV"
+    editorProps={{$blockScrolling: true}}
+  />,
   document.getElementById('app')
 );
-
-
